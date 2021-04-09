@@ -1,0 +1,369 @@
+:root {
+  /* Primary */
+  --clr-limeGreen: hsl(163, 72%, 41%);
+  --clr-brightred: hsl(356, 69%, 56%);
+
+  --clr-facebook: hsl(208, 92%, 53%);
+  --clr-twitter: hsl(203, 89%, 53%);
+  --clr-igleft: hsl(37, 97%, 70%);
+  --clr-igright: hsl(329, 70%, 58%);
+  --clr-youtube: hsl(348, 97%, 39%);
+
+  /* Dark Theme */
+
+  --clr-toggleleft: hsl(210, 78%, 56%);
+  --clr-toggleright: hsl(146, 68%, 55%);
+
+  /* #### Light Theme */
+
+  --clr-lighttoggle: hsl(230, 22%, 74%);
+
+  /* ### Neutral */
+
+  /* #### Dark Theme */
+
+  --clr-darkblue: hsl(230, 17%, 14%); /* BG */
+  --clr-vdarkblue: hsl(232, 19%, 15%); /* Top BG Pattern */
+  --clr-darkdesaturatedblue: hsl(228, 28%, 20%); /* Card BG */
+  --clr-desaturatedblue: hsl(228, 34%, 66%); /* text */
+  --clr-white: hsl(0, 0%, 100%); /* text */
+
+  /* #### Light Theme */
+
+  /* white BG */
+  --clr-paleblue: hsl(225, 100%, 98%); /* Top BG Pattern */
+  --clr-lightgrayishblue: hsl(227, 47%, 96%); /* Card BG */
+  --clr-darkgrayishblue: hsl(228, 12%, 44%); /* Text */
+  /* darkblue Text */
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  background: var(--clr-white);
+  color: var(--clr-darkblue);
+  transition: 0.4s;
+}
+
+body.darkmode {
+  background: var(--clr-darkblue);
+  color: white;
+}
+
+header {
+  background: var(--clr-paleblue);
+  transition: 0.4s;
+}
+
+header.darkmode {
+  background: var(--clr-vdarkblue);
+}
+
+.container {
+  width: 90%;
+  max-width: 72rem;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  transform: translateY(-60px);
+}
+
+p {
+  color: var(--clr-darkgrayishblue);
+  font-weight: 700;
+}
+
+p.darkmode {
+  color: var(--clr-desaturatedblue);
+}
+
+header .container {
+  justify-content: space-between;
+  padding: 7em 0;
+}
+
+header .container > *:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.hr {
+  border-top: 1px solid var(--clr-darkblue);
+  width: 100%;
+  display: none;
+}
+
+.hr.darkmode {
+  border-top: 1px solid var(--clr-desaturatedblue);
+}
+
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dark-mode-toggle p {
+  color: var(--clr-lighttoggle);
+}
+
+.dark-mode-toggle.darkmode p {
+  color: white;
+}
+
+.checks {
+  position: relative;
+  width: 50px;
+  height: 25px;
+  margin-left: 1rem;
+}
+
+.checks input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-dark {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 3rem;
+  background: var(--clr-lighttoggle);
+  -webkit-transition: 0.4s;
+  transition: color 0.4s;
+}
+
+.toggle-dark:hover {
+  background: linear-gradient(
+    to right,
+    var(--clr-toggleleft),
+    var(--clr-toggleright)
+  );
+}
+
+.toggle-dark::before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 3px;
+  top: 3px;
+  border-radius: 50%;
+  background: var(--clr-lightgrayishblue);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .toggle-dark {
+  background: linear-gradient(
+    to right,
+    var(--clr-toggleleft),
+    var(--clr-toggleright)
+  );
+}
+
+input:checked + .toggle-dark:before {
+  -webkit-transform: translateX(25px);
+  -ms-transform: translateX(25px);
+  transform: translateX(25px);
+  background: var(--clr-vdarkblue);
+}
+
+main .container {
+  flex-direction: column;
+}
+
+main {
+  transform: translateY(-60px);
+}
+
+section {
+  width: 100%;
+}
+
+.cards {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.card {
+  background: var(--clr-lightgrayishblue);
+  border-radius: 5px;
+  width: 23%;
+  padding: 1.6em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card.darkmode {
+  background: var(--clr-darkdesaturatedblue);
+}
+
+.card:hover {
+  background: hsl(227, 47%, 90%);
+}
+
+.card.darkmode:hover {
+  background: hsl(228, 28%, 30%);
+}
+
+.card > *:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.sec1 {
+  margin-bottom: 3rem;
+}
+
+.sec1 .acc {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--clr-darkgrayishblue);
+  justify-content: center;
+}
+
+.acc.darkmode {
+  color: var(--clr-desaturatedblue);
+}
+
+.acc img {
+  margin-right: 0.5rem;
+}
+
+.follower {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.follower span {
+  font-weight: 700;
+  font-size: 3.5rem;
+}
+
+.follower p {
+  letter-spacing: 4px;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.changes {
+  display: flex;
+  align-items: center;
+}
+
+.changes img {
+  margin-right: 0.2rem;
+}
+
+span.up {
+  color: var(--clr-limeGreen);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+span.down {
+  color: var(--clr-brightred);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.followers .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.fb-card::before {
+  background: var(--clr-facebook);
+}
+
+.tw-card::before {
+  background: var(--clr-twitter);
+}
+
+.ig-card::before {
+  background: linear-gradient(to right, var(--clr-igleft), var(--clr-igright));
+}
+
+.yt-card::before {
+  background: var(--clr-youtube);
+}
+
+.sec2 h2 {
+  color: var(--clr-darkgrayishblue);
+  font-size: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.sec2.darkmode h2 {
+  color: white;
+}
+
+.head-card,
+.foot-card {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.foot-card span:first-child {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.foot-card .changes {
+  align-self: end;
+}
+
+@media only screen and (max-width: 1250px) {
+  .card {
+    width: 48%;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .card {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .hr {
+    display: block;
+  }
+
+  header .container {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .dark-mode-toggle {
+    width: 100%;
+  }
+}
